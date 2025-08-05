@@ -8,10 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Google -->
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&display=swap" rel="stylesheet">
-  <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax//font-awesome/6.4.0/css/all.min.css">
-    <!-- QR Code Library -->
-    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Firebase SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.6.0/firebase-firestore-compat.js"></script>
@@ -21,25 +19,12 @@
             --pastel-purple: #d8bfd8;
             --pastel-blue: #add8e6;
             --pastel-yellow: #fffacd;
-            --pastel-green: #98fb98;
-        }
-        
-        [data-bs-theme="dark"] {
-            --bs-body-bg: #1a1a2e;
-            --bs-body-color: #e6e6e6;
-            --card-bg: #16213e;
         }
         
         body {
             font-family: 'M PLUS Rounded 1c', sans-serif;
             background-color: #f9f3ff;
             color: #5a4a6a;
-            transition: all 0.3s ease;
-        }
-        
-        [data-bs-theme="dark"] body {
-            background-color: #1a1a2e;
-            color: #e6e6e6;
         }
         
         .header {
@@ -51,8 +36,16 @@
             overflow: hidden;
         }
         
-        [data-bs-theme="dark"] .header {
-            background: linear-gradient(135deg, #6a3093, #a044ff);
+        .header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="rgba(255,255,255,0.2)"><path d="M30,20 Q50,10 70,20 T90,40 Q95,60 80,80 T50,95 Q20,85 10,60 T20,20 Q30,10 50,10 Z"/></svg>');
+            background-size: 100px;
+            opacity: 0.3;
         }
         
         .title {
@@ -72,11 +65,6 @@
             animation: fadeIn 0.5s ease-out;
         }
         
-        [data-bs-theme="dark"] .link-card {
-            background-color: var(--card-bg);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        
         .link-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
@@ -92,18 +80,10 @@
             margin-bottom: 0.5rem;
         }
         
-        [data-bs-theme="dark"] .link-title {
-            color: #b399d4;
-        }
-        
         .link-url {
             color: #8a7aaf;
             font-size: 0.9rem;
             word-break: break-all;
-        }
-        
-        [data-bs-theme="dark"] .link-url {
-            color: #c2b8d9;
         }
         
         .btn-add {
@@ -138,40 +118,16 @@
             border: none;
         }
         
-        .btn-favorite {
-            background-color: var(--pastel-yellow);
-            border: none;
-        }
-        
-        .btn-favorite.active {
-            background-color: #ffd700;
-        }
-        
-        .btn-qr {
-            background-color: var(--pastel-green);
-            border: none;
-        }
-        
         .modal-content {
             border-radius: 15px;
             border: none;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
-        [data-bs-theme="dark"] .modal-content {
-            background-color: var(--card-bg);
-        }
-        
         .form-control {
             border-radius: 10px;
             border: 1px solid #e0d6eb;
             padding: 0.5rem 1rem;
-        }
-        
-        [data-bs-theme="dark"] .form-control {
-            background-color: #2a2a4a;
-            border-color: #4a4a6a;
-            color: #e6e6e6;
         }
         
         .form-control:focus {
@@ -182,69 +138,6 @@
         .form-label {
             font-weight: 500;
             color: #6a4b93;
-        }
-        
-        [data-bs-theme="dark"] .form-label {
-            color: #b399d4;
-        }
-        
-        .badge-category {
-            font-size: 0.75rem;
-            padding: 0.35em 0.65em;
-            border-radius: 50px;
-        }
-        
-        .stat-card {
-            border-radius: 12px;
-            padding: 1rem;
-            text-align: center;
-            color: white;
-            margin-bottom: 1rem;
-        }
-        
-        .bg-pastel-blue {
-            background-color: var(--pastel-blue);
-        }
-        
-        .bg-pastel-pink {
-            background-color: var(--pastel-pink);
-        }
-        
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 10px;
-            color: white;
-            background-color: #4CAF50;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transform: translateY(100px);
-            opacity: 0;
-            transition: all 0.3s ease;
-            z-index: 1000;
-            max-width: 300px;
-        }
-        
-        .notification.show {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .notification.error {
-            background-color: #f44336;
-        }
-        
-        .notification.warning {
-            background-color: #ff9800;
-        }
-        
-        .btn-close-notification {
-            background: none;
-            border: none;
-            color: white;
-            margin-left: 10px;
-            cursor: pointer;
         }
         
         @keyframes fadeIn {
@@ -261,46 +154,6 @@
             animation: fadeOut 0.3s ease-out forwards;
         }
         
-        /* Pagination styles */
-        .page-item.active .page-link {
-            background-color: var(--pastel-purple);
-            border-color: var(--pastel-purple);
-        }
-        
-        .page-link {
-            color: #6a4b93;
-        }
-        
-        [data-bs-theme="dark"] .page-link {
-            background-color: #2a2a4a;
-            color: #e6e6e6;
-            border-color: #4a4a6a;
-        }
-        
-        /* Preview tooltip */
-        .preview-tooltip {
-            position: absolute;
-            z-index: 100;
-            width: 300px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            padding: 10px;
-            display: none;
-        }
-        
-        [data-bs-theme="dark"] .preview-tooltip {
-            background-color: #2a2a4a;
-            border: 1px solid #4a4a6a;
-        }
-        
-        /* QR Code Modal */
-        #qrCodeContainer {
-            display: flex;
-            justify-content: center;
-            padding: 20px;
-        }
-        
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .header {
@@ -310,109 +163,26 @@
             .title {
                 font-size: 1.5rem;
             }
-            
-            .stat-card {
-                margin-bottom: 0.5rem;
-            }
         }
     </style>
 </head>
-<body data-bs-theme="light">
+<body>
     <div class="header mb-4 text-center">
-        <div class="d-flex justify-content-between align-items-center">
-            <div></div>
-            <div>
-                <h1 class="title">Link Flutter Berguna</h1>
-                <p class="text-white mb-0">Kumpulan link bermanfaat untuk Flutter</p>
-            </div>
-            <button id="darkModeToggle" class="btn btn-sm btn-outline-light">
-                <i class="fas fa-moon"></i>
-            </button>
-        </div>
+        <h1 class="title">Link Flutter Berguna</h1>
+        <p class="text-white mb-0">Kumpulan link bermanfaat untuk Flutter</p>
     </div>
     
     <div class="container">
-        <!-- Statistik -->
         <div class="row mb-4">
-            <div class="col-md-3 col-6">
-                <div class="stat-card bg-pastel-blue">
-                    <h3 id="totalLinks">0</h3>
-                    <p>Total Link</p>
-                </div>
-            </div>
-            <div class="col-md-3 col-6">
-                <div class="stat-card bg-pastel-pink">
-                    <h3 id="favoriteLinks">0</h3>
-                    <p>Favorit</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Search and Filter -->
-        <div class="row mb-4">
-            <div class="col-md-6 mb-2">
-                <div class="input-group">
-                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                    <input type="text" id="searchInput" class="form-control" placeholder="Cari link...">
-                </div>
-            </div>
-            <div class="col-md-3 mb-2">
-                <select id="categoryFilter" class="form-select">
-                    <option value="">Semua Kategori</option>
-                    <option value="tutorial">Tutorial</option>
-                    <option value="package">Package</option>
-                    <option value="video">Video</option>
-                    <option value="artikel">Artikel</option>
-                </select>
-            </div>
-            <div class="col-md-3 mb-2">
-                <select id="sortSelect" class="form-select">
-                    <option value="favorite">Favorit Pertama</option>
-                    <option value="newest">Terbaru</option>
-                    <option value="oldest">Terlama</option>
-                    <option value="az">A-Z</option>
-                    <option value="za">Z-A</option>
-                </select>
-            </div>
-        </div>
-        
-        <!-- Action Buttons -->
-        <div class="row mb-4">
-            <div class="col-12 d-flex justify-content-between">
-                <div>
-                    <button id="exportBtn" class="btn btn-secondary me-2">
-                        <i class="fas fa-file-export"></i> Export
-                    </button>
-                    <button id="importBtn" class="btn btn-secondary">
-                        <i class="fas fa-file-import"></i> Import
-                    </button>
-                </div>
+            <div class="col-12 text-end">
                 <button class="btn btn-add text-white" data-bs-toggle="modal" data-bs-target="#addLinkModal">
                     <i class="fas fa-plus me-2"></i>Tambah Link
                 </button>
             </div>
         </div>
         
-        <!-- Links Container -->
         <div class="row" id="linksContainer">
             <!-- Links will be loaded here -->
-        </div>
-        
-        <!-- Pagination -->
-        <div class="row mt-4">
-            <div class="col-12">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center" id="paginationControls">
-                        <li class="page-item disabled" id="prevPage">
-                            <a class="page-link" href="#" tabindex="-1">Sebelumnya</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item" id="nextPage">
-                            <a class="page-link" href="#">Selanjutnya</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
         </div>
     </div>
     
@@ -433,16 +203,6 @@
                         <div class="mb-3">
                             <label for="linkUrl" class="form-label">URL</label>
                             <input type="url" class="form-control" id="linkUrl" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="linkCategory" class="form-label">Kategori</label>
-                            <select class="form-select" id="linkCategory" required>
-                                <option value="tutorial">Tutorial</option>
-                                <option value="package">Package</option>
-                                <option value="video">Video</option>
-                                <option value="artikel">Artikel</option>
-                                <option value="lainnya">Lainnya</option>
-                            </select>
                         </div>
                     </form>
                 </div>
@@ -473,16 +233,6 @@
                             <label for="editLinkUrl" class="form-label">URL</label>
                             <input type="url" class="form-control" id="editLinkUrl" required>
                         </div>
-                        <div class="mb-3">
-                            <label for="editLinkCategory" class="form-label">Kategori</label>
-                            <select class="form-select" id="editLinkCategory" required>
-                                <option value="tutorial">Tutorial</option>
-                                <option value="package">Package</option>
-                                <option value="video">Video</option>
-                                <option value="artikel">Artikel</option>
-                                <option value="lainnya">Lainnya</option>
-                            </select>
-                        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
@@ -492,61 +242,143 @@
             </div>
         </div>
     </div>
-    
-    <!-- QR Code Modal -->
-    <div class="modal fade" id="qrCodeModal" tabindex="-1" aria-labelledby="qrCodeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-sm">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="qrCodeModalLabel">QR Code</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <div id="qrCodeContainer"></div>
-                    <p id="qrCodeUrl" class="mt-2 small"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Import Modal -->
-    <div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="importModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="importModalLabel">Import Data</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="importFile" class="form-label">Pilih file JSON</label>
-                        <input class="form-control" type="file" id="importFile" accept=".json">
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="overwriteData">
-                        <label class="form-check-label" for="overwriteData">
-                            Timpa data yang sudah ada
-                        </label>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                    <button type="button" class="btn btn-primary" id="confirmImportBtn">Import</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Preview Tooltip -->
-    <div class="preview-tooltip" id="previewTooltip">
-        <div class="preview-loader text-center py-3">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-        <div class="preview-content" style="display: none;">
-            <h6 class="preview-title"></h6>
-            <p class="preview-descripti
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyA27iUWIsqv_6A4kzGq12qt0eEicfkgOmI",
+            authDomain: "bote-1a4b9.firebaseapp.com",
+            databaseURL: "https://bote-1a4b9-default-rtdb.firebaseio.com",
+            projectId: "bote-1a4b9",
+            storageBucket: "bote-1a4b9.firebasestorage.app",
+            messagingSenderId: "898324022444",
+            appId: "1:898324022444:web:e930d0fa96262ddf6c4b09",
+            measurementId: "G-Y0FDF0ZYWF"
+        };
+        
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+        
+        // Reference to the links collection
+        const linksRef = db.collection("links");
+        
+        // DOM elements
+        const linksContainer = document.getElementById('linksContainer');
+        const addLinkForm = document.getElementById('addLinkForm');
+        const editLinkForm = document.getElementById('editLinkForm');
+        const saveLinkBtn = document.getElementById('saveLinkBtn');
+        const updateLinkBtn = document.getElementById('updateLinkBtn');
+        
+        // Modal instances
+        const addLinkModal = new bootstrap.Modal(document.getElementById('addLinkModal'));
+        const editLinkModal = new bootstrap.Modal(document.getElementById('editLinkModal'));
+        
+        // Save new link
+        saveLinkBtn.addEventListener('click', () => {
+            const title = document.getElementById('linkTitle').value;
+            const url = document.getElementById('linkUrl').value;
+            
+            if (title && url) {
+                linksRef.add({
+                    title: title,
+                    url: url,
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    addLinkForm.reset();
+                    addLinkModal.hide();
+                })
+                .catch((error) => {
+                    console.error("Error adding document: ", error);
+                });
+            }
+        });
+        
+        // Load links in real-time
+        linksRef.orderBy('createdAt').onSnapshot((snapshot) => {
+            linksContainer.innerHTML = '';
+            
+            snapshot.forEach((doc) => {
+                const link = doc.data();
+                const linkId = doc.id;
+                
+                const linkCard = document.createElement('div');
+                linkCard.className = 'col-md-6 col-lg-4';
+                linkCard.id = `link-${linkId}`;
+                linkCard.innerHTML = `
+                    <div class="link-card card mb-3">
+                        <div class="card-body">
+                            <h5 class="link-title">${link.title}</h5>
+                            <p class="link-url mb-3">
+                                <a href="${link.url}" target="_blank">${link.url}</a>
+                            </p>
+                            <div class="d-flex justify-content-end">
+                                <button class="btn btn-sm btn-action btn-edit" data-id="${linkId}">
+                                    <i class="fas fa-edit me-1"></i>Edit
+                                </button>
+                                <button class="btn btn-sm btn-action btn-delete" data-id="${linkId}">
+                                    <i class="fas fa-trash me-1"></i>Hapus
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                linksContainer.appendChild(linkCard);
+                
+                // Add event listeners for edit and delete buttons
+                linkCard.querySelector('.btn-edit').addEventListener('click', () => editLink(linkId, link.title, link.url));
+                linkCard.querySelector('.btn-delete').addEventListener('click', () => deleteLink(linkId));
+            });
+        });
+        
+        // Edit link function
+        function editLink(id, title, url) {
+            document.getElementById('editLinkId').value = id;
+            document.getElementById('editLinkTitle').value = title;
+            document.getElementById('editLinkUrl').value = url;
+            editLinkModal.show();
+        }
+        
+        // Update link
+        updateLinkBtn.addEventListener('click', () => {
+            const id = document.getElementById('editLinkId').value;
+            const title = document.getElementById('editLinkTitle').value;
+            const url = document.getElementById('editLinkUrl').value;
+            
+            if (id && title && url) {
+                linksRef.doc(id).update({
+                    title: title,
+                    url: url
+                })
+                .then(() => {
+                    editLinkModal.hide();
+                })
+                .catch((error) => {
+                    console.error("Error updating document: ", error);
+                });
+            }
+        });
+        
+        // Delete link function
+        function deleteLink(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus link ini?')) {
+                const linkElement = document.getElementById(`link-${id}`);
+                if (linkElement) {
+                    linkElement.classList.add('fade-out');
+                    setTimeout(() => {
+                        linksRef.doc(id).delete()
+                            .catch((error) => {
+                                console.error("Error removing document: ", error);
+                            });
+                    }, 300);
+                }
+            }
+        }
+    </script>
+</body>
+		    </html>
